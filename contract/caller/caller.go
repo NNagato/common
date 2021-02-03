@@ -56,5 +56,5 @@ func (c *Caller) Call(opts *bind.CallOpts, funcName string, result interface{}, 
 	if err != nil {
 		return err
 	}
-	return c.cABI.UnpackIntoInterface(&result, funcName, outByte)
+	return c.cABI.UnpackIntoInterface(result, funcName, outByte)
 }
