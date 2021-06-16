@@ -52,11 +52,9 @@ func (rc *RestClient) DoReq(url, method string, data, result interface{}) error 
 		return errors.Wrap(err, "failed to do req")
 	}
 	rspBody, err := ioutil.ReadAll(rsp.Body)
+	_ = rsp.Body.Close()
 	if err != nil {
 		return errors.Wrap(err, "failed to read body")
-	}
-	if err := rsp.Body.Close(); err != nil {
-		return errors.Wrap(err, "failed to close body")
 	}
 	if rsp.StatusCode != http.StatusOK {
 		var rspData interface{}
